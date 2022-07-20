@@ -24,6 +24,9 @@ function mostrarOpciones(){
         
         case "B":
             console.log(pacientes);
+            let buscar = prompt("Ingrese DNI del Paciente")
+            let busqueda = pacientes.find (paciente => paciente.dni === buscar)
+            console.log (busqueda)
             mostrarOpciones();
             break;
 
