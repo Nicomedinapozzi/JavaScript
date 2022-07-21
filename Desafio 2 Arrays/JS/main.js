@@ -23,15 +23,20 @@ function mostrarOpciones(){
             break;
         
         case "B":
-            console.log(pacientes);
             let buscar = prompt("Ingrese DNI del Paciente")
             let busqueda = pacientes.find (paciente => paciente.dni === buscar)
-            console.log (busqueda)
-            mostrarOpciones();
+            if (busqueda === undefined){
+                alert("Paciente no encontrado")                
+            }
+            else{
+                console.log (busqueda)            
+            }
+            mostrarOpciones()
             break;
 
         case "C":
             alert("Muchas Gracias")
+            console.log(pacientes)
             break;
 
         default:
