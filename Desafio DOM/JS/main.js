@@ -22,16 +22,20 @@ function mostrarOpciones(){
             cargardatospte();
             break;
         
-        case "B":
-            let buscar = prompt("Ingrese DNI del Paciente")
-            let busqueda = pacientes.find (paciente => paciente.dni === buscar)
-            if (busqueda === undefined){
-                alert("Paciente no encontrado")                
-            }
-            else{
-                console.log (busqueda)            
-            }
-            mostrarOpciones()
+            case "B":
+                let buscar = prompt("Ingrese DNI del Paciente")
+                let busqueda = pacientes.find (paciente => paciente.dni === buscar)
+                if (busqueda === undefined){
+                    alert("Paciente no encontrado")                
+                }
+                else{
+                    let conteiner = document.createElement (`Div`)
+                    conteiner.innerHTML = `<h3>Nombre: ${busqueda.nombre}</h3>
+                                          <h3>Apellido: ${busqueda.apellido}</h3>
+                                          <h3>Historia Clinica: ${busqueda.histclin}</h3>`
+                    document.body.appendChild(conteiner)               
+                }
+    
             break;
 
         case "C":
@@ -62,7 +66,3 @@ function cargardatospte() {
     }
     mostrarOpciones()
 }
-
-
-
-
