@@ -12,6 +12,12 @@ class Paciente {
 const cargarpte = document.getElementById ("cargarpte")
 cargarpte.addEventListener("click", () =>{cargarform()})
 
+actualizarArray()
+
+function actualizarArray(){    
+   pacientes = JSON.parse(localStorage.getItem("arraypte"))
+}
+
 function cargarform(){
     const formulario = document.createElement("div")
     formulario.innerHTML = `<fieldset>
@@ -37,5 +43,8 @@ function cargarDatos() {
 
         let paciente = new Paciente(nombre, apellido, dni, histclin);
         pacientes.push(paciente);
+        localStorage.setItem("arraypte", JSON.stringify(pacientes))
+        actualizarArray()
+        console.log(pacientes)
 
 }
