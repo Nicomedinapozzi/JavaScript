@@ -17,8 +17,14 @@ function mostrarPaciente() {
 
     let buscar = document.getElementById("dnibusc").value
     let busqueda = pacientes.find(paciente => paciente.dni === buscar)
+    
+
     if (busqueda === undefined) {
-        alert("Paciente no encontrado")
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Paciente no encontrado',
+          })
     }
     else {
         let conteiner = document.createElement(`Div`)
@@ -27,5 +33,15 @@ function mostrarPaciente() {
                                           <h3>Historia Clinica: ${busqueda.histclin}</h3>`
         document.body.appendChild(conteiner)
     }
+
+
+}
+
+function mostrarPte() {
+    let conteiner = document.createElement(`Div`)
+    conteiner.innerHTML = `<h3>Nombre: ${busqueda.nombre}</h3>
+                                      <h3>Apellido: ${busqueda.apellido}</h3>
+                                      <h3>Historia Clinica: ${busqueda.histclin}</h3>`
+    document.body.appendChild(conteiner)
 
 }

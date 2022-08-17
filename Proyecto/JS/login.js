@@ -24,15 +24,31 @@ function validacion() {
     let validuser= usuarios.find(usuario => usuario.usuario=== u);
     let validpass= usuarios.find(usuario => usuario.pass === p );
     if (validuser === undefined ) {
-        alert("Usuario o Contraseña incorrectos");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario o Contraseña incorrectos',
+          })
     }
     
     else if (validpass === undefined) {
-        alert("Usuario o Contraseña incorrectos");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Usuario o Contraseña incorrectos',
+          })
     }
 
     else {
-        window.location.href="Paginas/principal.html"
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Acceso correcto',
+            showConfirmButton: true,
+            timer: 3000          
+          })
+
+          window.location.href="Paginas/principal.html"
     }
 }
 
