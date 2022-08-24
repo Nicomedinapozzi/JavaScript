@@ -9,6 +9,15 @@ class Paciente {
     }
 }
 
+traerPacientes()
+
+function traerPacientes(){
+    fetch("https://pokeapi.co/api/v2/pokemon")
+    .then((res) => res.json())
+    .then((json) => console.log(json));
+
+}
+
 const cargarpte = document.getElementById ("cargarpte")
 cargarpte.addEventListener("click", () =>{cargarform()})
 

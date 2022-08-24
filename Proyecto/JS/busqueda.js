@@ -2,7 +2,9 @@ const buscarpte = document.getElementById("buscarpte")
 buscarpte.addEventListener("click", () => { buscarPte() })
 
 
+
 function buscarPte() {
+    
     const buscardni = document.createElement(`div`)
     buscardni.innerHTML = `<input type="text" name="dnibusc" id="dnibusc" placeholder="DNI">
                            <button id="buscar">Buscar</button>`
