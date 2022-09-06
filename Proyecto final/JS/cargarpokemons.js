@@ -32,6 +32,36 @@ function cartasPokemon(pokemon) {
     contenedorCarta.appendChild(card)
     contenedor.appendChild(contenedorCarta)
 
+     /*
+  const cardContainer = document.createElement("div");
+  cardContainer.classList.add("card-container");
+
+  const card = document.createElement("div");
+  card.classList.add("pokemon-block");
+
+  const spriteContainer = document.createElement("div");
+  spriteContainer.classList.add("img-container");
+
+  const sprite = document.createElement("img");
+  sprite.src = pokemon.sprites.front_default;
+
+  spriteContainer.appendChild(sprite);
+
+  const number = document.createElement("p");
+  number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+
+  const name = document.createElement("p");
+  name.classList.add("name");
+  name.textContent = pokemon.name;
+
+  card.appendChild(spriteContainer);
+  card.appendChild(number);
+  card.appendChild(name);
+
+  cardContainer.appendChild(card);
+  contenedor.appendChild(cardContainer);
+    */
+
 }
 
 
