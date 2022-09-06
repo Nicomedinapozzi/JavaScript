@@ -5,8 +5,9 @@ function traerPokemones(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then((res) => res.json())
         .then((data) => {
-            cartasPokemon(data)
+            cartasPokemon(data)            
         });
+    
 }
 
 function cargarPokemones(num) {
@@ -15,7 +16,20 @@ function cargarPokemones(num) {
     }
 }
 
+class Pokemon {
+    constructor(nombre, id, img) {
+        this.nombre = nombre;
+        this.id = id;
+        this.img = img;
+    }
+}
 
+function crearPokemon(pokemon){
+    let poke = new Pokemon (pokemon.name, pokemon.id, pokemon.sprites.front_default);
+    pokemones.push(poke);
+    console.log(pokemones)
+
+}
 
 function cartasPokemon(pokemon) {
     const contenedorCarta = document.createElement(`div`)
@@ -32,35 +46,37 @@ function cartasPokemon(pokemon) {
     contenedorCarta.appendChild(card)
     contenedor.appendChild(contenedorCarta)
 
-     /*
-  const cardContainer = document.createElement("div");
-  cardContainer.classList.add("card-container");
+    
 
-  const card = document.createElement("div");
-  card.classList.add("pokemon-block");
+    /*
+ const cardContainer = document.createElement("div");
+ cardContainer.classList.add("card-container");
 
-  const spriteContainer = document.createElement("div");
-  spriteContainer.classList.add("img-container");
+ const card = document.createElement("div");
+ card.classList.add("pokemon-block");
 
-  const sprite = document.createElement("img");
-  sprite.src = pokemon.sprites.front_default;
+ const spriteContainer = document.createElement("div");
+ spriteContainer.classList.add("img-container");
 
-  spriteContainer.appendChild(sprite);
+ const sprite = document.createElement("img");
+ sprite.src = pokemon.sprites.front_default;
 
-  const number = document.createElement("p");
-  number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
+ spriteContainer.appendChild(sprite);
 
-  const name = document.createElement("p");
-  name.classList.add("name");
-  name.textContent = pokemon.name;
+ const number = document.createElement("p");
+ number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
 
-  card.appendChild(spriteContainer);
-  card.appendChild(number);
-  card.appendChild(name);
+ const name = document.createElement("p");
+ name.classList.add("name");
+ name.textContent = pokemon.name;
 
-  cardContainer.appendChild(card);
-  contenedor.appendChild(cardContainer);
-    */
+ card.appendChild(spriteContainer);
+ card.appendChild(number);
+ card.appendChild(name);
+
+ cardContainer.appendChild(card);
+ contenedor.appendChild(cardContainer);
+   */
 
 }
 
