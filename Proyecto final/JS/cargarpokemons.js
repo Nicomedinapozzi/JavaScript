@@ -1,85 +1,63 @@
 const contenedor = document.getElementById("contenedor")
-let pokemones = []
+
+cargarPokemones(100)
 
 function traerPokemones(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then((res) => res.json())
         .then((data) => {
-            cartasPokemon(data)            
+            cartasPokemon(data)
         });
-    
+
 }
 
 function cargarPokemones(num) {
     for (let i = 1; i <= num; i++) {
         traerPokemones(i)
+
     }
 }
 
-class Pokemon {
-    constructor(nombre, id, img) {
-        this.nombre = nombre;
-        this.id = id;
-        this.img = img;
-    }
-}
 
-function crearPokemon(pokemon){
-    let poke = new Pokemon (pokemon.name, pokemon.id, pokemon.sprites.front_default);
-    pokemones.push(poke);
-    console.log(pokemones)
-
-}
 
 function cartasPokemon(pokemon) {
     const contenedorCarta = document.createElement(`div`)
     contenedorCarta.classList.add(`pokemon-container`)
-    const card = document.createElement(`div`)
-    card.innerHTML = `<div class="card" style="width: 18rem;">
-                    <img src="${pokemon.sprites.front_default}" class="card-img-top" alt="${pokemon.name}">
-                    <div class="card-body">
-                    <h5 class="card-title">${pokemon.name}</h5>
-                    <p class="card-text"></p>
-                    <button class="btn btn-primary" id="pokefav">Agregar a favoritos</button>
-                    </div>
-                    </div>`
-    contenedorCarta.appendChild(card)
-    contenedor.appendChild(contenedorCarta)
+    
+    const divcarta = document.createElement(`div`)
+    divcarta.setAttribute(`id`, `pokecarta-${pokemon.id}`)
+    divcarta.setAttribute(`style`, `width: 18rem;`)
+    divcarta.classList.add(`card`)
+    divcarta.innerHTML = `<img src="${pokemon.sprites.front_default}" class="card-img-top" alt="${pokemon.name}">`
 
+    const bodycarta = document.createElement(`div`)
+    bodycarta.setAttribute(`id`, `bodycarta-${pokemon.id}`)
+    bodycarta.classList.add(`card-body`)
+    bodycarta.innerHTML = `<h5 class="card-title">${pokemon.name}</h5>
+                          <p class="card-text"></p>`
+
+    const btnfav = document.createElement(`button`)
+    btnfav.setAttribute(`id`, `pokefav-${pokemon.id}`)
+    btnfav.classList.add(`btn`)
+    btnfav.classList.add(`btn-primary`)
+    btnfav.innerText = "Agregar a Favoritos"
     
 
-    /*
- const cardContainer = document.createElement("div");
- cardContainer.classList.add("card-container");
+    divcarta.appendChild(bodycarta)
+    divcarta.appendChild(btnfav)
 
- const card = document.createElement("div");
- card.classList.add("pokemon-block");
+    contenedorCarta.appendChild(divcarta)
+    btnfav.addEventListener('click', () => {
+        crearPokemonFav(pokemon)   
 
- const spriteContainer = document.createElement("div");
- spriteContainer.classList.add("img-container");
+    })
+    contenedor.appendChild(contenedorCarta)
 
- const sprite = document.createElement("img");
- sprite.src = pokemon.sprites.front_default;
-
- spriteContainer.appendChild(sprite);
-
- const number = document.createElement("p");
- number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
-
- const name = document.createElement("p");
- name.classList.add("name");
- name.textContent = pokemon.name;
-
- card.appendChild(spriteContainer);
- card.appendChild(number);
- card.appendChild(name);
-
- cardContainer.appendChild(card);
- contenedor.appendChild(cardContainer);
-   */
 
 }
 
 
-cargarPokemones(5)
+
+
+
 

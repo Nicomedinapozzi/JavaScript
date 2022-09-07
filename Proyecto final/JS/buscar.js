@@ -5,7 +5,7 @@ function buscarpokemon(){
     contenedor.innerHTML = ""
     const busc = document.getElementById("buscapoke").value
     if (busc === ""){
-        cargarPokemones(5)
+        cargarPokemones(100)
     }
     else{
         traerPokemones(busc)
